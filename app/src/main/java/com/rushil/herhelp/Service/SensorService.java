@@ -175,6 +175,7 @@ public class SensorService extends Service {
     // implemented strict notification rules, which require us to identify
     // our own notification channel in order to view them correctly.
     @RequiresApi(Build.VERSION_CODES.O)
+
     private void startMyOwnForeground() {
         String NOTIFICATION_CHANNEL_ID = "example.permanence";
         String channelName = "Background Service";
