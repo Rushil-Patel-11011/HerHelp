@@ -38,6 +38,7 @@ This permission is necessary for devices
             android:name=".Service.ReactivateService"
             android:enabled="true"
             android:exported="true" /> <!-- register the service -->
+
         <service
             android:name=".Service.SensorService"
             android:enabled="true"

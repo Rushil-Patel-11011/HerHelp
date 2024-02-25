@@ -65,7 +65,7 @@ public class SensorService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             startMyOwnForeground();
         else
-            startForeground(1, new Notification());
+            startForeground(1,new Notification());
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -195,7 +195,8 @@ public class SensorService extends Service {
                 .setPriority(NotificationManager.IMPORTANCE_MIN)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .build();
-        startForeground(2, notification);
+
+        startForeground(2,notification);
     }
 
     @Override
