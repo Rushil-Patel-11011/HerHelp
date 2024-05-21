@@ -1,5 +1,4 @@
 package com.rushil.herhelp.Contacts;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,23 +10,17 @@ import java.util.List;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
-
     // Database Name
     private static final String DATABASE_NAME = "contactdata";
-
     // Country table name
     private static final String TABLE_NAME= "contacts";
-
     // Country Table Columns names
     private static final String KEY_ID = "id";
     private static final String NAME = "Name";
     private static final String PHONENO = "PhoneNo";
-
-
     public DbHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -37,12 +30,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 + PHONENO + " TEXT" + ")";
         db.execSQL(CREATE_COUNTRY_TABLE);
     }
-
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
-    }
-
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {}
     // method to add the contact
     public void addcontact(ContactModel contact){
         SQLiteDatabase db=this.getWritableDatabase();
@@ -52,7 +41,6 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME,null,c);
         db.close();
     }
-
     // method to retrieve all the contacts in List
     public List<ContactModel> getAllContacts() {
         List<ContactModel> list = new ArrayList<>();
@@ -61,9 +49,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(query, null);
         if (c.moveToFirst()) {
             do {
-
                 list.add(new ContactModel(c.getInt(0), c.getString(1), c.getString(2)));
-
             } while (c.moveToNext());
         }
         return list;
@@ -80,13 +66,11 @@ public class DbHelper extends SQLiteOpenHelper {
         c.close();
         return count;
     }
-
     // Deleting single country
     public void deleteContact(ContactModel contact) {
         SQLiteDatabase db = this.getWritableDatabase();
         int i=db.delete(TABLE_NAME,KEY_ID + " = ?",
                 new String[] { String.valueOf(contact.getId()) });
-
         db.close();
     }
 }

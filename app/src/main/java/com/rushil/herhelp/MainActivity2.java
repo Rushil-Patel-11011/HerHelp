@@ -1,5 +1,4 @@
 package com.rushil.herhelp;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -35,17 +34,14 @@ import com.rushil.herhelp.Service.*;
 import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
-
     private static final int IGNORE_BATTERY_OPTIMIZATION_REQUEST = 1002;
     private static final int PICK_CONTACT = 1;
-
     // create instances of various classes to be used
     Button button1;
     ListView listView;
     DbHelper db;
     List<ContactModel> list;
     CustomAdapter customAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,7 +148,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                         String phone = null;
                         try {
-                            if (hasPhone!=null && hasPhone.equals("1")) {
+                            if (hasPhone!=null &&hasPhone.equals("1")) {
                                 Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
                                 phones.moveToFirst();
                                 phone = phones.getString(phones.getColumnIndex("data1"));
@@ -168,7 +164,6 @@ public class MainActivity2 extends AppCompatActivity {
                 break;
         }
     }
-
     // this method prompts the user to remove any
     // battery optimisation constraints from the App
     private void askIgnoreOptimization() {
